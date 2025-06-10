@@ -12,11 +12,19 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  box-shadow: 0 4px 8px gray;
+  box-shadow: 4px 4px 8px rgb(46, 1, 36);
   margin-top: 50px;
   height: 400px;
   width: 300px;
   border-radius: 20px;
-  background-color: rgb(241, 240, 240);
+  /* background-color: rgb(99, 91, 91); */
+}
+
+
+@media (max-width: 600px) {
+  .card {
+    width: 100%;
+    font-size: 14px;
+  }
 }
 
