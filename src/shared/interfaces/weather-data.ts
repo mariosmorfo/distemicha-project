@@ -4,4 +4,5 @@ export interface WeatherData {
   temperature: number;
   weatherDescription: string;
   weatherIconUrl: string;
+  isDay: boolean;
 }
