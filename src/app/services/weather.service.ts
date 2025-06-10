@@ -3,21 +3,20 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { WeatherData } from '../../shared/interfaces/weather-data';
 const apiKey = "d108e95ddac34a62be9111704251006";
-const apiUrl = "https://api.weatherapi.com/";
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class Weather {
+export class WeatherService {
 
 
 
-  http: HttpClient = inject(HttpClient);
-  constructor() { }
+constructor(private http: HttpClient){}
 
   getWeather(cityName: string):Observable<WeatherData>{
-    const url = `${apiUrl}/v1/current.json?key=${apiKey}&q=${cityName}`
+   const url = `/weatherapi/v1/current.json?key=${apiKey}&q=${cityName}`;
+
 
     return this.http.get<any>(url).pipe(
       map(response => {
@@ -26,11 +25,17 @@ export class Weather {
           country: response.location.country,
           temperature: response.current.temp_c,
           weatherDescription: response.current.condition.text,
-          weatherIconUrl: 'https:' + response.current.condition.icon
+          weatherIconUrl: 'https:' + response.current.condition.icon,
+           isDay: response.current.is_day === 1
 
-        } as WeatherData;
+        }
       })
     )
 
+
+  }
+
+  isDay(isDay: boolean){
+    
   }
 }
