@@ -7,13 +7,11 @@
 }
 
 
-
-
-
 .card {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   box-shadow: 0 4px 8px gray;
   margin-top: 50px;
   height: 400px;
@@ -21,3 +19,4 @@
   border-radius: 20px;
   background-color: rgb(241, 240, 240);
 }
+
