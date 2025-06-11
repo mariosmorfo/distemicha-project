@@ -1,13 +1,11 @@
-<div class="container d-flex justify-content-center align-items-center vh-100">
-  <div class="card p-4 shadow-lg rounded" style="width: 300px;">
-    <h4 class="text-center mb-3">Weather App</h4>
-    
-    <input [(ngModel)]="cityName" class="form-control mb-2" type="search" placeholder="Enter a city">
-
-    <button class="btn btn-success w-100 mb-" (click)="onSearch()">Search</button>
-
-    <div *ngIf="weatherData">
-      <app-weather-info [weather]="weatherData"></app-weather-info>
-    </div>
+<div *ngIf="!weatherData" class="container">
+  <div class="card  p-4 rounded">
+    <h4 class="text-center mb-4">Weather App</h4>
+      <input [(ngModel)]="cityName" class="custom-input" type="search" placeholder="Enter a city">
+      <button class="btn btn-success w-100 mb-2" (click)="onSearch()">Search</button>
+      
   </div>
+</div>
+<div *ngIf="weatherData" class="container" >
+  <app-weather-info class="card p-4 rounded" [weather]="weatherData" (click)="onBack()"></app-weather-info>
 </div>
