@@ -14,17 +14,25 @@ export class WeatherService {
 
 constructor(private http: HttpClient){}
 
-  getWeather(cityName: string):Observable<WeatherData>{
-   const url = `/weatherapi/v1/current.json?key=${apiKey}&q=${cityName}`;
+getWeather(cityNameOrLatLon: string, lang: string = 'en'): Observable<WeatherData> {
+  const url = `/weatherapi/v1/current.json?key=${apiKey}&q=${encodeURIComponent(cityNameOrLatLon)}&lang=${lang}`;
+
+
 
 
     return this.http.get<any>(url).pipe(
       map(response => {
+
+        let description = response.current.condition.text;
+  
+       if (response.current.is_day === 0 && description === 'Sunny') {
+          description = 'Clear';
+         }
         return{
           cityName: response.location.name,
           country: response.location.country,
           temperature: response.current.temp_c,
-          weatherDescription: response.current.condition.text,
+          weatherDescription: description,
           weatherIconUrl: 'https:' + response.current.condition.icon,
            isDay: response.current.is_day === 1
 
