@@ -14,7 +14,7 @@ export class WeatherBackground {
   @Input() weatherDescription : undefined | string = ""
 
   get weatherBackground(): string {
-    if(!this.isDay){
+    if(this.isDay === false){
       return 'night';
     }
 
