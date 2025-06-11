@@ -24,13 +24,23 @@ weatherData?: WeatherData;
   cityName: string= "";
 
   onSearch():void{
-   this.weather.getWeather(this.cityName).subscribe(data => {
-    this.weatherData = data;
-    this.showWeather = true;
+    if (!this.cityName.trim()) {
+    alert('Please enter a city name.');
+    return;
+  }
+
+  this.weather.getWeather(this.cityName).subscribe({
+    next: (data) => {
+      this.weatherData = data;
+      this.showWeather = true;
+    },
+    error: (err) => {
+      console.error('Error fetching weather data', err);
+      alert('Could not fetch weather data. Please check the city name.');
+    }
   });
 
 }
-
    onBack(): void {
    this.weatherData = undefined;
    this.cityName = '';
