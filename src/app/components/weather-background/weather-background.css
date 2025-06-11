@@ -1,10 +1,13 @@
 .background {
-  position: fixed;
+  position: fixed;    
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 
@@ -14,17 +17,18 @@
 }
 
 .night {
-  background-color: #0d1b2a;
+  background-image: url('/assets/night.jpg');
+  
 }
 
 .rainy {
-  background-color: #90a4ae;
+ background-image: url('/assets/rain.jpg');
 }
 
 .cloudy {
-  background-color: #b0bec5;
+  background-image: url('/assets/cloud.jpg');
 }
 
 .sunny {
-  background-color: #ffe082;
+  background-image: url('/assets/sun.jpg');
 }
