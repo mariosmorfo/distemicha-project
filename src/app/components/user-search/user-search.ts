@@ -16,56 +16,46 @@ import { GeocodingService } from '../../services/geocoding-service';
 export class UserSearch {
 
 weather: WeatherService = inject(WeatherService);
-geocoding: GeocodingService = inject(GeocodingService);
-
-
-showWeather = false;
 weatherData?: WeatherData;
+geocoding: GeocodingService = inject(GeocodingService);
+showWeather = false;
+favorites: { cityName: string; country: string }[] = [];
+cityName: string= "";
 
-
-  favorites: { cityName: string; country: string }[] = [];
-  cityName: string= "";
 
   onSearch(): void {
-  const lang = navigator.language.startsWith('el') ? 'el' : 'en';
+    const lang = navigator.language.startsWith('el') ? 'el' : 'en';
+    
+    this.geocoding.geocodeCity(this.cityName).subscribe({
+     next: location => {
+        const Param = `${location.lat},${location.lon}`;
 
-  this.geocoding.geocodeCity(this.cityName).subscribe({
-    next: location => {
-      const qParam = `${location.lat},${location.lon}`;
-
-      this.weather.getWeather(qParam, 'en').subscribe({
-        next: data => {
-          this.weatherData = data;
-          this.showWeather = true;
-        },
+    this.weather.getWeather(Param, 'en').subscribe({
+      next: data => {
+        this.weatherData = data;
+        this.showWeather = true;
+    },
         error: () => {
           alert('Could not fetch weather data. Please check the city name.');
-        }
-      });
-    },
-    error: () => {
-      alert('Could not find this city.');
     }
-  });
-}
+    })},
+        error: () => {
+          alert('Could not find this city.');
+    }})}
  
    onBack(): void {
    this.weatherData = undefined;
    this.cityName = '';
-
-}
-
-onFavorite(fav: { cityName: string; country: string }): void {
-  if (!this.favorites.find(city => city.cityName === fav.cityName && city.country === fav.country)) {
-    this.favorites.push(fav);
   }
-}
 
-onDeleteCity(cityToDelete: { cityName: string; country: string }): void {
-  this.favorites = this.favorites.filter(city =>
-    city.cityName !== cityToDelete.cityName || city.country !== cityToDelete.country
-  );
-  this.weatherData = undefined;
-  this.cityName = '';
-}
+  onFavorite(fav: { cityName: string; country: string }): void {
+  if (!this.favorites.find(city => city.cityName === fav.cityName && city.country === fav.country)) {
+      this.favorites.push(fav);
+  }}
+
+  onDeleteCity(cityToDelete: { cityName: string; country: string }): void {
+    this.favorites = this.favorites.filter(city => city.cityName !== cityToDelete.cityName || city.country !== cityToDelete.country);
+    this.weatherData = undefined;
+    this.cityName = '';
+  }
 }
