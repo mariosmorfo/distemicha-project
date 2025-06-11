@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { WeatherData } from '../../../shared/interfaces/weather-data';
+// import { UserSearch } from '../user-search/user-search';
 
 @Component({
   selector: 'app-weather-info',
@@ -10,6 +11,13 @@ import { WeatherData } from '../../../shared/interfaces/weather-data';
 export class WeatherInfo {
 
   @Input() weather?: WeatherData
+
+  @Output() back = new EventEmitter<void>();
+
+  onBackClick(){
+   this.back.emit();
+  }
+  
   
 }
 
