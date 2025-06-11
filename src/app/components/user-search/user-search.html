@@ -1,13 +1,27 @@
 <div *ngIf="!weatherData" class="container">
-  <div class="card  p-4 rounded">
-    <h4 class="text-center mb-4">Weather App</h4>
+  <div class="card p-4">
+    <h3 class="text-center mb-4">Weather App</h3>
       <input [(ngModel)]="cityName" class="custom-input" type="search" placeholder="Enter a city">
-      <button class="btn btn-success w-100 mb-2" (click)="onSearch()">Search</button>
+      <button class="btn btn-success" (click)="onSearch()">Search</button>
       
   </div>
 </div>
 <div *ngIf="weatherData" class="container" >
-  <app-weather-info class="card p-4 rounded" [weather]="weatherData" (back)="onBack()"></app-weather-info>
+  <app-weather-info class="card p-4" [weather]="weatherData" (back)="onBack()" (favorite)="onFavorite($event)"></app-weather-info>
+</div>
+ <div *ngIf="favorites.length > 0" class="mt-4">
+  <h5>Favorites</h5>
+  <ul class="list-group">
+    <li
+      *ngFor="let city of favorites"
+      class="list-group-item list-group-item-action"
+      (click)="onFavoriteSearch(city)"
+      style="cursor: pointer;">
+      {{ city }}
+      
+      <button class="btn btn-sm btn-danger" (click)="onDeleteCity(city)">Delete</button>
+    </li>
+  </ul>
 </div>
 
 <app-weather-background [isDay]="weatherData?.isDay" [weatherDescription]="weatherData?.weatherDescription"></app-weather-background>

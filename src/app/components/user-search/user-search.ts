@@ -20,6 +20,7 @@ showWeather = false;
 weatherData?: WeatherData;
 
 
+  favorites : string[] = [];
   cityName: string= "";
 
   onSearch():void{
@@ -35,4 +36,20 @@ weatherData?: WeatherData;
    this.cityName = '';
 
 }
+
+  onFavorite(cityName: string): void{
+    if(!this.favorites.includes(cityName)){
+      this.favorites.push(cityName)
+    }
+  }
+
+  onFavoriteSearch(cityName: string): void {
+  this.cityName = cityName;
+  this.onSearch();
+}
+
+  onDeleteCity(cityName: string): void {
+    this.favorites = this.favorites.filter(city => city !== cityName)
+  }
+
 }
