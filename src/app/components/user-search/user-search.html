@@ -2,24 +2,23 @@
   <div class="card p-4">
     <h3 class="text-center mb-4">Weather App</h3>
       <input [(ngModel)]="cityName" class="custom-input" type="search" placeholder="Enter a city" (keydown.enter)="onSearch()">
-      <button class="btn btn-success" (click)="onSearch()">Search</button>
-      
+      <button class="btn btn-success" (click)="onSearch()">Search</button> 
+</div>
+  
+</div>
+  <div *ngIf="weatherData" class="container" >
+    <app-weather-info class="card p-4" [weather]="weatherData" (back)="onBack()" (favorite)="onFavorite($event)"></app-weather-info>
   </div>
-</div>
-<div *ngIf="weatherData" class="container" >
-  <app-weather-info class="card p-4" [weather]="weatherData" (back)="onBack()" (favorite)="onFavorite($event)"></app-weather-info>
-</div>
- <div *ngIf="favorites.length > 0" class="mt-4">
- <ul *ngIf="favorites.length > 0" class="mt-4">
-  <h5>Favorites</h5>
-  <ul class="list-group">
-    <li *ngFor="let city of favorites" class="list-group-item list-group-item-action">
-      {{ city.cityName }}, {{ city.country }}
-      <button class="btn btn-sm btn-danger" (click)="onDeleteCity(city)">Delete</button>
-      
-    </li>
-  </ul>
-</ul>
-</div>
 
+ <div *ngIf="favorites.length > 0" class="mt-4">
+  <ul *ngIf="favorites.length > 0" class="mt-4">
+    <h5>Favorites</h5>
+      <ul class="list-group">
+        <li *ngFor="let city of favorites" class="list-group-item list-group-item-action">
+          {{ city.cityName }}, {{ city.country }}
+            <button class="btn btn-sm btn-danger" (click)="onDeleteCity(city)">Delete</button>
+        </li>
+      </ul>
+  </ul>
+</div>
 <app-weather-background [isDay]="weatherData?.isDay" [weatherDescription]="weatherData?.weatherDescription"></app-weather-background>
