@@ -31,11 +31,5 @@ constructor(private http: HttpClient){}
         }
       })
     )
-
-
-  }
-
-  isDay(isDay: boolean){
-    
   }
 }
