@@ -8,8 +8,6 @@ import { Observable, map } from 'rxjs';
 export class GeocodingService {
 
   private apiKey = '396b8398c0234ddda8a2e8de3d4d8402'
-
-
   constructor(private http: HttpClient) {}
 
   geocodeCity(cityName: string): Observable<{ lat: number; lon: number }> {
