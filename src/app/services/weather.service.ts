@@ -9,17 +9,11 @@ const apiKey = "d108e95ddac34a62be9111704251006";
   providedIn: 'root'
 })
 export class WeatherService {
-
-
-
+  
 constructor(private http: HttpClient){}
 
 getWeather(cityNameOrLatLon: string, lang: string = 'en'): Observable<WeatherData> {
   const url = `/weatherapi/v1/current.json?key=${apiKey}&q=${encodeURIComponent(cityNameOrLatLon)}&lang=${lang}`;
-
-
-
-
     return this.http.get<any>(url).pipe(
       map(response => {
 
@@ -35,7 +29,6 @@ getWeather(cityNameOrLatLon: string, lang: string = 'en'): Observable<WeatherDat
           weatherDescription: description,
           weatherIconUrl: 'https:' + response.current.condition.icon,
            isDay: response.current.is_day === 1
-
         }
       })
     )
