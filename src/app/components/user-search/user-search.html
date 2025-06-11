@@ -7,5 +7,5 @@
   </div>
 </div>
 <div *ngIf="weatherData" class="container" >
-  <app-weather-info class="card p-4 rounded" [weather]="weatherData" (click)="onBack()"></app-weather-info>
+  <app-weather-info class="card p-4 rounded" [weather]="weatherData" (back)="onBack()"></app-weather-info>
 </div>
