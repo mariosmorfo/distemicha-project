@@ -1,4 +1,4 @@
-.container{
+ .container{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6,25 +6,41 @@
   width: 100vw;
 }
 
-
 .card {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  box-shadow: 4px 4px 8px rgb(46, 1, 36);
   margin-top: 50px;
-  height: 400px;
-  width: 300px;
-  border-radius: 20px;
-  /* background-color: rgb(99, 91, 91); */
+  height: 350px;
+  width: 250px;
+  padding: 4px;
 }
-
 
 @media (max-width: 600px) {
   .card {
     width: 100%;
     font-size: 14px;
   }
+}
+
+.custom-input {
+  border: none;
+  border-bottom: 2px solid #ccc;
+  padding: 8px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  background-color: transparent;
+  color: #333;
+ margin-bottom: 10px;
+}
+
+.custom-input::placeholder {
+  color: #aaa;
+}
+
+.custom-input:focus {
+  border-bottom-color: #007bff;
 }
 
