@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { WeatherData } from '../../../shared/interfaces/weather-data';
-// import { UserSearch } from '../user-search/user-search';
+import { NgIcon } from '@ng-icons/core';
 
 @Component({
   selector: 'app-weather-info',
-  imports: [],
+  imports: [NgIcon],
   templateUrl: './weather-info.html',
   styleUrl: './weather-info.css'
 })
