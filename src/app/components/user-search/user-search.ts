@@ -4,10 +4,11 @@ import { WeatherData } from '../../../shared/interfaces/weather-data';
 import { WeatherInfo } from '../weather-info/weather-info';
 import { WeatherService } from '../../services/weather.service';
 import { CommonModule } from '@angular/common';
+import { WeatherBackground } from "../weather-background/weather-background";
 
 @Component({
   selector: 'app-user-search',
-  imports: [FormsModule, WeatherInfo, CommonModule],
+  imports: [FormsModule, WeatherInfo, CommonModule, WeatherBackground],
   templateUrl: './user-search.html',
   styleUrl: './user-search.css'
 })
