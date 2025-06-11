@@ -23,7 +23,8 @@ weather-info: Component that displays weather details and allows marking the cit
 
 weather-background: Component that visually represents the weather condition using dynamic CSS classes.
 
-geocoding-service.ts: Service layer that converts city names into geographic coordinates (latitude & longitude) using the OpenCage Geocoding API. Enables precise weather lookups by location.
+geocoding-service.ts: Service layer that converts city names into geographic coordinates (latitude & longitude) using the OpenCage Geocoding API.
+ Enables precise weather lookups by location.
 
 weather.service.ts: Service layer handling HTTP communication with the Weather API and mapping the response.
 
