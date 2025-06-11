@@ -34,6 +34,9 @@ proxy.conf.json: Used to proxy API requests through Angular dev server to avoid 
 ## Installation & Running
 
 git clone <git@github.com:mariosmorfo/distemicha-project.git>
+
 cd distemicha-project
+
 npm install
+
 ng serve
