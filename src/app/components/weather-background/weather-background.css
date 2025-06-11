@@ -13,7 +13,7 @@
 
 
 .default-day {
-  background-color: #e9edee;
+  background: linear-gradient(135deg, #dbeafe, #f0f9ff);
 }
 
 .night {
