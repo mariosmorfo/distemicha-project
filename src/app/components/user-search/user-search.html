@@ -9,3 +9,5 @@
 <div *ngIf="weatherData" class="container" >
   <app-weather-info class="card p-4 rounded" [weather]="weatherData" (back)="onBack()"></app-weather-info>
 </div>
+
+<app-weather-background [isDay]="weatherData?.isDay" [weatherDescription]="weatherData?.weatherDescription"></app-weather-background>
