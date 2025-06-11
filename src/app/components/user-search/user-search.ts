@@ -27,6 +27,11 @@ weatherData?: WeatherData;
     this.showWeather = true;
   });
 
+}
+
+   onBack(): void {
+   this.weatherData = undefined;
+   this.cityName = '';
 
 }
 }
