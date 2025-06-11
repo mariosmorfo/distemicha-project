@@ -12,7 +12,7 @@ export class WeatherInfo {
 
   @Input() weather?: WeatherData
   @Output() back = new EventEmitter<void>();
-  @Output() favorite = new EventEmitter<string>();
+  @Output() favorite = new EventEmitter<{cityName: string; country: string}>();
 
   onBackClick(): void{
    this.back.emit();
@@ -20,12 +20,12 @@ export class WeatherInfo {
 
   onFavoriteClick(): void{
     if(this.weather?.cityName){
-      this.favorite.emit(this.weather.cityName)
-    }
+     this.favorite.emit({
+      cityName: this.weather?.cityName || '',
+      country: this.weather?.country || ''
+    });
   }
-  
-  
+
 }
-
-
+}
 
